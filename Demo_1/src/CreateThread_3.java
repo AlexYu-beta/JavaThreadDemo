@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 /**
  * Created by alex on 3/10/17.
+ * manage to create 5*10 items of data by creating 5 different threads in order
+ * but fails to combine the efforts together, thus there is a need to study the reflection mechanism in Java
  */
 class SubThread implements Runnable{
 
@@ -52,6 +54,8 @@ public class CreateThread_3 implements Runnable{
             thread.start();
             try {
                 thread.join();
+                System.out.println("the class info is "+thread.getClass().getName());
+                //fetchData(thread);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -67,6 +71,8 @@ public class CreateThread_3 implements Runnable{
     }
 
     private void fetchData(SubThread subThread){
+        //SubThread subThread=thread;
+        //Runnable subThread=thread;
         this.numberArray.addAll(subThread.getNumberArray());
     }
 
